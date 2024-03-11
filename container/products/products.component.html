@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="site-name">
+    <h2>eShopping</h2>
+    <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="chose your item" style="border: 2px black solid; padding: 10px">
+    <span class="fas fa-search search-icon"></span>
+  </div>
+  <button class="btn btn-primary" style=" background: #F5B041; border: none; margin-right: 30px">
+    <i style="font-size: 35px;" class="fas fa-cart-plus"></i>
+    <div style="font-size: 10px;" class="badge bg-danger">5</div>
+  </button>
+</div>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of productList">
+      <div class="card col-md-3">
+        <h5 >{{product.name}}</h5>
+        <p><strong>Price:</strong> ${{product.price}}</p>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
