@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of productList">
+      <div class="card col-md-3">
+        <h5 >{{product.name}}</h5>
+        <p><strong>Price:</strong> ${{product.price}}</p>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
