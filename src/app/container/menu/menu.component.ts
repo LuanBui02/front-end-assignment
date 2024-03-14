@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CartService} from "../../service/cart.service";
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   public searchItem !: string;
-  constructor() { }
+  public totalItem: number = 0;
+
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
+    this.cartService.getProduct()
+      .subscribe(res => {
+      this.totalItem = res.length;
+    })
   }
+
   search(key: any) {
     this.searchItem = (key.target as HTMLInputElement).value;
   }

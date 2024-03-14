@@ -16,6 +16,9 @@ a {
   text-decoration: none;
   color: #212F3D;
   margin: 0 10px;
+  h2 {
+    color: #E74C3C;
+  }
 }
 .search-icon {
   position: absolute;
@@ -23,6 +26,12 @@ a {
   right: 52%;
   top: 38%;
   font-size: 20px;
+}
+.btn1 {
+  position: absolute;
+  left: 88%;
+  top: 25%;
+  color: white;
 }
 
 
