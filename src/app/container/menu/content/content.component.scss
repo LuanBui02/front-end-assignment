@@ -1,0 +1,31 @@
+body {
+  background-color: cyan;
+}
+.container {
+  background-color: #7fffec;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  .title {
+    padding-top: 8em;
+    font-weight: 900;
+
+  }
+  .context {
+    margin-top: 5em;
+    .context1 {
+      font-size: 25px;
+      font-weight: 600;
+      color: #212F3D;
+      padding-bottom: 15px;
+    }
+    .context2 {
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+  .btn {
+    margin: 20px 0;
+    padding: 10px 35px;
+  }
+}
