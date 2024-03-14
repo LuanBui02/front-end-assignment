@@ -1,0 +1,31 @@
+.container {
+  border: 1px solid black;
+  margin-top: 25px;
+}
+
+.title {
+  position: absolute;
+  height: 400px;
+  margin: 35px;
+}
+
+.content-empty {
+  margin-top: 15%;
+  text-align: center;
+  justify-content: center;
+
+  h3, p {
+    margin-bottom: 1.5em;
+  }
+
+  button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: blue;
+    padding: 15px 23px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+}
