@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 export class CartService {
   public cartListItem: any = [];
   public productList = new BehaviorSubject<any>([]);
-  public date: any;
+  public date = new Date();
   public search = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) {
@@ -31,8 +31,8 @@ export class CartService {
   }
   addToCart(product: any) {
     this.cartListItem.push(product);
-    this.getDate();
     this.productList.next(this.cartListItem);
+    this.getDate();
     this.saveCart();
   }
 
@@ -41,7 +41,6 @@ export class CartService {
 
     if (indexToRemove !== -1) {
       this.cartListItem.splice(indexToRemove, 1);
-      this.productList.next([...this.cartListItem]); // Using spread operator to create a new array
     }
     this.saveCart();
   }
@@ -60,6 +59,7 @@ export class CartService {
   increaseItem(product: any): any{
     product.quantity += 1;
     product.total = product.quantity * product.price;
+    this.saveCart();
   }
 
   decreaseItem(product: any) {
@@ -67,5 +67,6 @@ export class CartService {
       product.quantity -= 1;
       product.total -= product.price;
     }
+    this.saveCart();
   }
 }
