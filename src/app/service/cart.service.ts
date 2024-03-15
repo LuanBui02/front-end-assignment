@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {CartComponent} from "../container/cart/cart.component";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -8,76 +8,64 @@ import {CartComponent} from "../container/cart/cart.component";
 export class CartService {
   public cartListItem: any = [];
   public productList = new BehaviorSubject<any>([]);
+  public date: any;
+  public search = new BehaviorSubject<string>("");
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+  }
 
   getProduct() {
     return this.productList.asObservable();
   }
-
-  setProduct(product: any) {
-    this.cartListItem.push(...product);
-    this.productList.next(product);
+  productInCart(product: any): boolean{
+    return this.cartListItem.findIndex((x: any) => x.id === product.id) > -1;
   }
-
+  saveCart(): void {
+    localStorage.setItem('cart_items', JSON.stringify(this.cartListItem));
+  }
+  getProductInCart() {
+    return this.cartListItem;
+  }
+  loadCart(): void {
+    this.cartListItem = JSON.parse(localStorage.getItem('cart_items') as any) || [];
+  }
   addToCart(product: any) {
     this.cartListItem.push(product);
-    this.getCostItem(product);
-    this.getTotal();
-    this.getQuantity(product);
+    this.getDate();
     this.productList.next(this.cartListItem);
-  }
-
-  getQuantity(product: any): number{
-    let quantity: number = 0;
-    this.cartListItem.map((a: any) => {
-      if (product.id === a.id) {
-        quantity += 1;
-        a.quantity = quantity;
-        product.quantity = a.quantity;
-      }
-    })
-    return product.quantity;
-  }
-
-  getCostItem(product: any): number {
-    let costProduct = 0;
-    this.cartListItem.map((a: any) => {
-      costProduct = a.price * this.getQuantity(product);
-      product.total = costProduct;
-    })
-    return product.total;
-  }
-
-  getTotal(): number {
-    let costItem = 0;
-    this.cartListItem.map((a: any) => {
-       costItem+= a.total;
-    })
-    return costItem;
+    this.saveCart();
   }
 
   removeCartItem(product: any) {
-    this.cartListItem.map((a: any, index: any) => {
-      if (product.id === a.id) {
-        this.cartListItem.splice(index, 1);
-      }
-    })
+    let indexToRemove = this.cartListItem.findIndex((a: any) => product.id === a.id);
+
+    if (indexToRemove !== -1) {
+      this.cartListItem.splice(indexToRemove, 1);
+      this.productList.next([...this.cartListItem]); // Using spread operator to create a new array
+    }
+    this.saveCart();
+  }
+
+  getDate(): any {
+    this.date = new Date();
     this.productList.next(this.cartListItem);
   }
 
   removeAll() {
     this.cartListItem = [];
     this.productList.next(this.cartListItem);
+    this.saveCart();
   }
-  increaseItem (product:any): number{
-    let quantityChange = 0;
-    this.cartListItem.map((a: any) => {
-      quantityChange= product.quantity + 1;
-    })
-    return quantityChange;
+
+  increaseItem(product: any): any{
+    product.quantity += 1;
+    product.total = product.quantity * product.price;
   }
-  decreaseItem (product:any) {
-    this.addToCart(product);
+
+  decreaseItem(product: any) {
+    if(product.quantity > 1) {
+      product.quantity -= 1;
+      product.total -= product.price;
+    }
   }
 }
