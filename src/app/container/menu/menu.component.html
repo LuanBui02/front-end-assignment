@@ -5,11 +5,7 @@
       <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="Chose your item" style="border: 2px black solid; padding: 10px">
       <span class="fas fa-search search-icon"></span>
     </div>
-    <button class="btn1 btn-primary" style=" background: #F5B041; border: none;">
-      <i style="font-size: 35px;" class="fa-solid fa-receipt" routerLink="/order"></i>
-      <div style="font-size: 10px;" class="badge bg-danger">{{ totalItem }}</div>
-    </button>
-    <button class="btn btn-primary" style=" background: #F5B041; border: none;">
+    <button class="btn btn-primary" style=" background: #F5B041; border: none;margin-right: 35px">
       <i style="font-size: 35px;" class="fas fa-cart-plus" routerLink="/cart"></i>
       <div style="font-size: 10px;" class="badge bg-danger">{{ totalItem }}</div>
     </button>

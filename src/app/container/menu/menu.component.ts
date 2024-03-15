@@ -19,8 +19,8 @@ export class MenuComponent implements OnInit {
       this.totalItem = res.length;
     })
   }
-
   search(key: any) {
     this.searchItem = (key.target as HTMLInputElement).value;
+    this.cartService.search.next(this.searchItem);
   }
 }

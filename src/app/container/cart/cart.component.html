@@ -23,7 +23,7 @@
             {{ product.quantity }}
             <i (click)="increaseButton(product)" class="fa-solid fa-plus p-1" style="cursor: pointer"></i>
           </td>
-          <td><strong>${{ product.total }}</strong></td>
+          <td><strong>${{ product.quantity * product.price }}</strong></td>
           <td>
             <button (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
           </td>
@@ -31,12 +31,12 @@
         <tr>
           <td colspan="2"></td>
           <td>
-            <button class="btn btn-success" routerLink="/order">Check out</button>
+            <button class="btn btn-success" routerLink="/order" (click)="addToOrder()">Check out</button>
           </td>
           <td>
             <button routerLink="/products" class="btn btn-primary">Shopping more</button>
           </td>
-          <td><strong>Total : ${{ totalPrice }}</strong></td>
+          <td><strong>Total : ${{ total() }}</strong></td>
           <td>
             <button (click)="clearAll()" class="btn btn-danger">Clear all</button>
           </td>
