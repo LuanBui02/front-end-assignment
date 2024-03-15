@@ -7,9 +7,10 @@ import {CartComponent} from "./container/cart/cart.component";
 import {MenuComponent} from "./container/menu/menu.component";
 import {ProductsComponent} from "./container/products/products.component";
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ContentComponent } from './container/menu/content/content.component';
 import { OrderComponent } from './container/order/order.component';
+import { SearchPipe } from './filter/search.pipe';
 
 @NgModule({
   declarations: [
@@ -18,15 +19,16 @@ import { OrderComponent } from './container/order/order.component';
     MenuComponent,
     ProductsComponent,
     ContentComponent,
-    OrderComponent
+    OrderComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [SearchPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
