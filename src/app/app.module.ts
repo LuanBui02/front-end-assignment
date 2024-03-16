@@ -11,6 +11,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ContentComponent } from './container/menu/content/content.component';
 import { OrderComponent } from './container/order/order.component';
 import { SearchPipe } from './filter/search.pipe';
+import { AdminItemComponent } from './container/admin-item/admin-item.component';
+import { AdminOrderComponent } from './container/admin-order/admin-order.component';
+import { AdminUpdateComponent } from './container/admin-update/admin-update.component';
+import { AdminUpdateItemComponent } from './container/admin-update-item/admin-update-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { SearchPipe } from './filter/search.pipe';
     ProductsComponent,
     ContentComponent,
     OrderComponent,
-    SearchPipe
+    SearchPipe,
+    AdminItemComponent,
+    AdminOrderComponent,
+    AdminUpdateComponent,
+    AdminUpdateItemComponent
   ],
   imports: [
     BrowserModule,
