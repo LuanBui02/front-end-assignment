@@ -1,0 +1,21 @@
+.product-list {
+  margin: 20px auto;
+  width: 80%;
+}
+table{
+  text-align: left;
+  color: blueviolet;
+  border-collapse: collapse;
+}
+table td , table th{
+  border: 1px solid blueviolet;
+  padding: 10px;
+}
+.adjust-update-link{
+  margin-left: 10px;
+}
+button {
+  border: none;
+  outline: none;
+  background-color: white;
+}
