@@ -4,10 +4,16 @@
       <a href="#" routerLink="/content"><h2>eShopping</h2></a>
       <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="Chose your item" style="border: 2px black solid; padding: 10px">
       <span class="fas fa-search search-icon"></span>
+      <a href="#" routerLink="/admin-item" class="admin-seller"><p>Seller add item</p></a>
+      <a href="#" routerLink="/admin-update" class="admin-seller"><p>Seller update item</p></a>
+      <a href="#" routerLink="/admin-order" class="admin-seller"><p>Seller-order</p></a>
     </div>
-    <button class="btn btn-primary" style=" background: #F5B041; border: none;margin-right: 35px">
-      <i style="font-size: 35px;" class="fas fa-cart-plus" routerLink="/cart"></i>
-      <div style="font-size: 10px;" class="badge bg-danger">{{ totalItem }}</div>
+    <button class="btn btn-primary" style=" background: #F5B041; border: none;margin-right: 10px">
+      <i style="font-size: 35px;" class="fas fa-cart-plus" routerLink="/products"></i>
+    </button>
+    <button class="btn btn-primary" style=" background: #F5B041; border: none;">
+      <i style="font-size: 35px;" class="fa-solid fa-receipt" routerLink="/cart"></i>
+      <div style="font-size: 10px; margin-right: 5px" class="badge bg-danger">{{ totalItem }}</div>
     </button>
   </div>
 </header>
