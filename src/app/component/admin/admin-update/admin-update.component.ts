@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminItemService} from "../../service/admin-item.service";
+import {AdminItemService} from "../../../service/admin-item.service";
 import {BehaviorSubject} from "rxjs";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../../service/api.service";
-import {OrderService} from "../../service/order.service";
-import {AdminItemService} from "../../service/admin-item.service";
+import {ApiService} from "../../../service/api.service";
+import {OrderService} from "../../../service/order.service";
+import {AdminItemService} from "../../../service/admin-item.service";
 
 @Component({
   selector: 'app-admin-item',
@@ -18,9 +18,11 @@ export class AdminItemComponent implements OnInit {
   }
   submit(product: any) {
     this.adminService.addProduct(product).subscribe((result) => {
-      if(result) {
+      if(result == true) {
         this.messageSuccess = 'Product is added';
+        console.log('hello world');
       }
     });
   }
 }
+
