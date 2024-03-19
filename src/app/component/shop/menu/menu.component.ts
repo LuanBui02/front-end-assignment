@@ -16,9 +16,10 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getProduct()
       .subscribe(res => {
-      this.totalItem = res.length;
-    })
+        this.totalItem = res.length;
+      })
   }
+
   search(key: any) {
     this.searchItem = (key.target as HTMLInputElement).value;
     this.cartService.search.next(this.searchItem);

@@ -2,7 +2,8 @@
   <div class="navbar">
     <div class="site-name">
       <a href="#" routerLink="/content"><h2>eShopping</h2></a>
-      <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="Chose your item" style="border: 2px black solid; padding: 10px">
+      <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="Chose your item"
+             style="border: 2px black solid; padding: 10px">
       <span class="fas fa-search search-icon"></span>
       <a href="#" routerLink="/admin-item" class="admin-seller"><p>Seller add item</p></a>
       <a href="#" routerLink="/admin-update" class="admin-seller"><p>Seller update item</p></a>

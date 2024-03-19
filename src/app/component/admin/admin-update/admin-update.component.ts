@@ -10,7 +10,7 @@ import {BehaviorSubject} from "rxjs";
 export class AdminUpdateComponent implements OnInit {
   public updateMessage !: string;
   public products: any;
-  public productsList = new BehaviorSubject([]);
+
   constructor(private adminService: AdminItemService) {
   }
 

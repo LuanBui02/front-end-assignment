@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from "../../../service/cart.service";
 
 @Component({
@@ -8,7 +8,9 @@ import {CartService} from "../../../service/cart.service";
 })
 export class AdminOrderComponent implements OnInit {
   public products: any;
-  constructor(private cartService: CartService) { }
+
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
     this.cartService.getProduct()
@@ -19,6 +21,7 @@ export class AdminOrderComponent implements OnInit {
     this.products = this.cartService.getProductInCart();
 
   }
+
   totalSum(): number {
     return this.products.reduce((sum: any, product: any) => ({
       quantity: 1,

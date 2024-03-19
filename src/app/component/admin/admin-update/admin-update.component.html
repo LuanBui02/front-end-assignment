@@ -15,7 +15,8 @@
       <td>{{ item.price }}</td>
       <td>
         <button (click)="deleteProduct(item.id)" routerLink="/admin-item"><i class="fa-solid fa-trash"></i></button>
-        <a routerLink="/admin-update-item/{{item.id}}" style="margin-left: 15px"><i class="fa-regular fa-pen-to-square"></i></a>
+        <a routerLink="/admin-update-item/{{item.id}}" style="margin-left: 15px"><i
+          class="fa-regular fa-pen-to-square"></i></a>
       </td>
     </tr>
     </tbody>

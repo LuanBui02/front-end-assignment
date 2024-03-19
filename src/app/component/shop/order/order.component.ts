@@ -9,17 +9,20 @@ import {formatDate} from "@angular/common";
 })
 export class OrderComponent implements OnInit {
   public products: any;
-  constructor(private cartService: CartService) { }
+
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
     this.cartService.getProduct()
       .subscribe((res) => {
-      this.products = res;
-    })
+        this.products = res;
+      })
     this.cartService.loadCart();
     this.products = this.cartService.getProductInCart();
 
   }
+
   totalSum(): number {
     return this.products.reduce((sum: any, product: any) => ({
       quantity: 1,
@@ -27,6 +30,7 @@ export class OrderComponent implements OnInit {
     })).price;
 
   }
+
   checkout() {
     alert('Thank you!');
   }

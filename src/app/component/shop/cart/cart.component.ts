@@ -10,6 +10,7 @@ import {OrderService} from "../../../service/order.service";
 export class CartComponent implements OnInit {
   public products: any;
   public increase !: number;
+
   constructor(private cartService: CartService, private orderService: OrderService) {
   }
 
@@ -21,27 +22,33 @@ export class CartComponent implements OnInit {
     this.cartService.loadCart();
     this.products = this.cartService.getProductInCart();
   }
+
   total() {
     return this.products.reduce(
       (sum: any, product: any) => ({
         quantity: 1,
         price: sum.price + product.quantity * product.price,
       }),
-      { quantity: 1, price: 0 }
+      {quantity: 1, price: 0}
     ).price;
   }
+
   clearAll() {
     this.cartService.removeAll();
   }
-  removeItem(item:any) {
+
+  removeItem(item: any) {
     this.cartService.removeCartItem(item);
   }
-  increaseButton (product:any) {
+
+  increaseButton(product: any) {
     this.cartService.increaseItem(product);
   }
-  decreaseButton (product:any) {
+
+  decreaseButton(product: any) {
     this.cartService.decreaseItem(product);
   }
+
   addToOrder() {
     this.orderService.addToOrder(this.products);
   }
