@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../../../service/api.service";
-import {OrderService} from "../../../service/order.service";
+import {Component, OnInit} from '@angular/core';
 import {AdminItemService} from "../../../service/admin-item.service";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-item',
@@ -10,19 +17,35 @@ import {AdminItemService} from "../../../service/admin-item.service";
 })
 export class AdminItemComponent implements OnInit {
   public products: any;
-  public messageSuccess !: string ;
-  constructor(private adminService: AdminItemService) { }
+  public messageSuccess !: string;
+  public submitted = false;
+  public messageFail !: string;
+
+  constructor(private adminService: AdminItemService, private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
-
+    this.products = this.formBuilder.group({
+      name: ['', Validators.required],
+      price: [0, Validators.required]
+    })
+  }
+  checkName(product: any) {
+    for(let i = 0; i <= this.products.length; i++) {
+      if(product.name == this.products[i].name) {
+        console.log("Duplicated");
+      }
+    }
   }
   submit(product: any) {
-    this.adminService.addProduct(product).subscribe((result) => {
-      if(result == true) {
-        this.messageSuccess = 'Product is added';
-        console.log('hello world');
-      }
-    });
+    this.submitted = true;
+    this.adminService.addProduct(product).subscribe(
+      (response) => {
+        alert(response.message);
+      },
+      (error) => {
+        console.log(error);
+      });
   }
 }
 

@@ -1,23 +1,54 @@
 <div class="add-product">
   <h1>Add New Product</h1>
-  <p class="message-p">{{messageSuccess}}</p>
+  <p class="message-p">{{ messageSuccess }}</p>
   <form #addProduct="ngForm"
         (ngSubmit)="submit(addProduct.value)"
         class="common-form">
-    <input
-      type="text"
-      class="form-input"
-      placeholder="Enter Product Name"
-      name="name"
-      ngModel
-    />
-    <input
-      type="text"
-      class="form-input"
-      placeholder="Enter Product Price"
-      name="price"
-      ngModel
-    />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Product Name"
+        name="name"
+        #name="ngModel"
+        [ngClass]="{'is-invalid': submitted && addProduct.controls.name.errors}"
+        [class.is-invalid]="name.invalid && name.touched"
+        required
+        [(ngModel)]="addProduct.name"
+      />
+    <div *ngIf="submitted && addProduct.controls.name.errors" class="text-danger">
+      <small class="text-danger"
+             *ngIf="submitted && addProduct.controls.name.errors.required">
+        Name is required!
+      </small>
+      <small class="text-danger"
+             *ngIf="submitted && addProduct.controls.name.errors">
+        {{messageFail}}
+      </small>
+    </div>
+      <input
+        type="text"
+        class="form-control"
+        required
+        pattern="\d{1,99}"
+        #price="ngModel"
+        [ngClass]="{'is-invalid': submitted && addProduct.controls.price.errors}"
+        [class.is-invalid]="price.invalid && price.touched"
+        placeholder="Enter Product Price"
+        name="price"
+        ngModel
+      />
+    <div *ngIf="submitted && addProduct.controls.price.errors" class="text-danger">
+      <small class="text-danger"
+             *ngIf="submitted && addProduct.controls.price.errors.required">
+        Price is required!
+      </small>
+      <small class="text-danger"
+             *ngIf="submitted && addProduct.controls.price.errors.pattern">
+        Price is number!
+      </small>
+    </div>
+
+
     <button class="form-button">Add Product</button>
 
     <button class="form-button" routerLink="/products" style="margin-top: 20px">Go to Product</button>
