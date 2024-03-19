@@ -1,14 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminItemService} from "../../../service/admin-item.service";
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
-} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-item',
@@ -30,13 +22,7 @@ export class AdminItemComponent implements OnInit {
       price: [0, Validators.required]
     })
   }
-  checkName(product: any) {
-    for(let i = 0; i <= this.products.length; i++) {
-      if(product.name == this.products[i].name) {
-        console.log("Duplicated");
-      }
-    }
-  }
+
   submit(product: any) {
     this.submitted = true;
     this.adminService.addProduct(product).subscribe(
