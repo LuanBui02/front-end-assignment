@@ -35,12 +35,14 @@ export class AdminUpdateItemComponent implements OnInit {
     if (this.productData) {
       product.id = this.productData.id;
       this.adminService.updateItem(product).subscribe(
-        (response: any) => {
+        (response) => {
+          console.log(response);
+          alert(response.message);
           if (!response) {
             this.messageSuccess = "Item is updated!"
           }
-        },(error: any) => {
-          console.log(error);
+        }, (error: any) => {
+          console.log(error.error.message);
           alert(error.error.message);
         })
     }
