@@ -25,10 +25,11 @@ export class OrderComponent implements OnInit {
 
   totalSum(): number {
     return this.products.reduce((sum: any, product: any) => ({
-      quantity: 1,
-      price: sum.price + product.quantity * product.price,
-    })).price;
-
+        quantity: 1,
+        price: sum.price + product.quantity * product.price,
+      }),
+      {quantity: 1, price: 0}
+    ).price;
   }
 
   checkout() {
