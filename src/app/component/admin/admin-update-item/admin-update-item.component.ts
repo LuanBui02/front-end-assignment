@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminItemService} from "../../../service/admin-item.service";
 import {ActivatedRoute} from "@angular/router";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-update-item',
@@ -10,8 +11,9 @@ import {ActivatedRoute} from "@angular/router";
 export class AdminUpdateItemComponent implements OnInit {
   public messageSuccess !: string;
   public productData: any;
+  public submitted = false;
 
-  constructor(private adminService: AdminItemService, private route: ActivatedRoute) {
+  constructor(private adminService: AdminItemService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -20,16 +22,27 @@ export class AdminUpdateItemComponent implements OnInit {
     this.adminService.getProductById(productId).subscribe((data: any) => {
       this.productData = data;
     });
+
+    this.productData = this.formBuilder.group({
+      name: ['', Validators.required],
+      price: ['', Validators.required]
+    })
   }
 
   submit(product: any) {
+    this.submitted = true;
+    console.log(this.productData);
     if (this.productData) {
       product.id = this.productData.id;
+      this.adminService.updateItem(product).subscribe(
+        (response: any) => {
+          if (!response) {
+            this.messageSuccess = "Item is updated!"
+          }
+        },(error: any) => {
+          console.log(error);
+          alert(error.error.message);
+        })
     }
-    this.adminService.updateItem(product).subscribe(res => {
-      if (res) {
-        this.messageSuccess = 'Item is updated';
-      }
-    })
   }
 }

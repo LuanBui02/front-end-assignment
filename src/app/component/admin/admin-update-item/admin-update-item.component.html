@@ -1,23 +1,51 @@
 <div class="update-product">
   <h1>Update New Product</h1>
   <p class="message-p">{{ messageSuccess }}</p>
+
   <form #updateProduct="ngForm"
         (ngSubmit)="submit(updateProduct.value)"
         class="common-form">
+
+    <div class="box">
+      <div>Current product name: <strong>{{ productData.name }}</strong> </div>
+      <div>Current product price: <strong>{{ productData.price }}</strong> </div>
+    </div>
     <input
       type="text"
-      class="form-input"
+      class="form-control"
       placeholder="Enter Product Name"
+      required
+      #name="ngModel"
+      [ngClass]="{'is-invalid': submitted && updateProduct.controls.name.errors}"
+      [class.is-invalid]="name.invalid && name.touched"
       name="name"
       ngModel
     />
+    <div class="text-danger" *ngIf="submitted && updateProduct.controls.name.errors">
+      <div *ngIf="submitted && updateProduct.controls.name.errors.required">
+        Name is require!
+      </div>
+    </div>
     <input
       type="text"
-      class="form-input"
+      class="form-control"
+      required
+      pattern="\d{1,99}"
+      #price="ngModel"
+      [ngClass]="{'is-invalid': submitted && updateProduct.controls.price.errors}"
+      [class.is-invalid]="price.invalid && price.touched"
       placeholder="Enter Product Price"
       name="price"
       ngModel
     />
+    <div class="text-danger" *ngIf="submitted && updateProduct.controls.price.errors">
+      <div *ngIf="submitted && updateProduct.controls.price.errors.required">
+        Price is require!
+      </div>
+      <div *ngIf="submitted && updateProduct.controls.price.errors.pattern">
+        Price is just a number!
+      </div>
+    </div>
     <button class="form-button">Update Product</button>
 
     <button class="form-button" routerLink="/products" style="margin-top: 20px">Go to Product</button>

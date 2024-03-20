@@ -3,3 +3,15 @@
     text-align: center;
   }
 }
+.box {
+  height: 70px;
+  margin-bottom: 20px;
+  border: 1px solid blueviolet;
+  padding-left: 15px;
+  color: blueviolet;
+  border-radius: 10px;
+  div {
+    color: black;
+    padding: 5px;
+  }
+}
