@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@fortawesome/fontawesome-free/css/all.css";
+
 body {
   font-family: sans-serif;
 }
+
 .container {
   margin-left: 5%;
   margin-right: 5%;
 }
+
 .common-form {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: auto;
 }
+
 .form-control {
   height: 35px;
   margin-bottom: 20px;
@@ -20,13 +24,20 @@ body {
   padding-left: 15px;
   color: blueviolet;
 }
+
 .form-button {
   height: 35px;
   border: 1px solid blueviolet;
   color: blueviolet;
   cursor: pointer;
 }
-.message-p{
+
+.message-p {
   color: green;
   text-align: center;
+}
+
+.text-danger {
+  margin-top: -20px;
+  text-align: center
 }
