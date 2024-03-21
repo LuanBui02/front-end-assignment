@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminItemService} from "../../../service/admin-item.service";
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-admin-update',
@@ -21,10 +20,6 @@ export class AdminUpdateComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.adminService.deleteItem(id).subscribe(res => {
-      if (res) {
-        this.updateMessage = 'Item is deleted';
-      }
-    });
+    this.adminService.deleteItem(id);
   }
 }
