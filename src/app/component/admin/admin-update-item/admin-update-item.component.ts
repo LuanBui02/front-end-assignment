@@ -15,7 +15,11 @@ export class AdminUpdateItemComponent implements OnInit {
   public errorName: undefined | string;
   public errorPrice: undefined | string;
 
-  constructor(private adminService: AdminItemService, private routeActive: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private adminService: AdminItemService,
+    private routeActive: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router) {
   }
 
   ngOnInit(): void {
