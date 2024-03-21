@@ -10,10 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AdminItemComponent implements OnInit {
   public products: any;
-  public messageSuccess !: string;
+  public messageSuccess: string | undefined;
   public submitted = false;
-  public check = null;
-  public messageError !: string;
+  public messageError: undefined | string;
+  public errorName: string | undefined;
+
   constructor(private adminService: AdminItemService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
   }
 
@@ -28,21 +29,23 @@ export class AdminItemComponent implements OnInit {
     this.submitted = true;
     this.adminService.addProduct(product).subscribe(
       (response: any) => {
-        if(!response) {
-          this.messageSuccess = "Item is added"
+        if (!response) {
+          this.messageSuccess = "Item is added";
         }
         console.log(response);
-        alert(response.message);
+        this.errorName = response.message;
       },
       (error) => {
-        alert(error.error.message);
         console.log(product.price);
-        this.check = product.price;
-        console.log(this.check);
-        if(this.check == 0) {
-          this.messageError = error.error.message;
-        }
+        this.messageError = error.error.message;
       })
+    setTimeout(() => {
+      this.messageError = undefined;
+      this.errorName = undefined;
+    }, 2000);
+    setTimeout(() => {
+      this.messageSuccess = undefined;
+    }, 4000);
   }
 }
 

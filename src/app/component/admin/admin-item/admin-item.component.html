@@ -1,9 +1,10 @@
 <div class="add-product">
   <h1>Add New Product</h1>
+  <p *ngIf="messageSuccess" class="message-p">{{ messageSuccess }}</p>
   <form #addProduct="ngForm"
         (ngSubmit)="submit(addProduct.value)"
         class="common-form">
-    <p class="message-p">{{ messageSuccess }}</p>
+
     <input
       type="text"
       class="form-control"
@@ -42,13 +43,15 @@
              *ngIf="submitted && addProduct.controls.price.errors.pattern">
         Price is number!
       </small>
-      <small class="text-danger" *ngIf="price == check">
-        {{messageError}}
-      </small>
     </div>
 
     <button class="form-button">Add Product</button>
-
+    <small class="text-danger text" *ngIf="messageError">
+      {{ messageError }}
+    </small>
+    <small class="text-danger text" *ngIf="errorName">
+      {{ errorName }}
+    </small>
     <button class="form-button" routerLink="/products" style="margin-top: 20px">Go to Product</button>
 
     <button class="form-button" routerLink="/admin-update" style="margin-top: 20px">View update items</button>
