@@ -9,7 +9,6 @@ import {OrderService} from "../../../service/order.service";
 })
 export class CartComponent implements OnInit {
   public products: any;
-  public increase !: number;
 
   constructor(private cartService: CartService, private orderService: OrderService) {
   }
@@ -50,6 +49,6 @@ export class CartComponent implements OnInit {
   }
 
   addToOrder() {
-    this.orderService.addToOrder(this.products);
+    this.orderService.addToOrder();
   }
 }
