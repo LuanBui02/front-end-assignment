@@ -18,6 +18,8 @@ export class MenuComponent implements OnInit {
       .subscribe(res => {
         this.totalItem = res.length;
       })
+    this.cartService.loadCart();
+    this.totalItem = this.cartService.getLengthOfProduct();
   }
 
   search(key: any) {
