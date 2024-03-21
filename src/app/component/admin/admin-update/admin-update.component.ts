@@ -20,6 +20,6 @@ export class AdminUpdateComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.adminService.deleteItem(id);
+    this.adminService.deleteItem(id).subscribe();
   }
 }
