@@ -29,13 +29,20 @@ export class CartService {
   getProductInCart() {
     return this.cartListItem;
   }
-
+  getLengthOfProduct() {
+    return this.cartListItem.length;
+  }
   loadCart(): void {
     this.cartListItem = JSON.parse(localStorage.getItem('cart_items') as any) || [];
   }
-
   addToCart(product: any) {
     this.cartListItem.push(product);
+    this.productList.next(this.cartListItem);
+    this.getDate();
+    this.saveCart();
+  }
+  addToOrder() {
+    this.getProductInCart();
     this.productList.next(this.cartListItem);
     this.getDate();
     this.saveCart();
@@ -47,6 +54,7 @@ export class CartService {
     if (indexToRemove !== -1) {
       this.cartListItem.splice(indexToRemove, 1);
     }
+    this.productList.next(this.cartListItem);
     this.saveCart();
   }
 
