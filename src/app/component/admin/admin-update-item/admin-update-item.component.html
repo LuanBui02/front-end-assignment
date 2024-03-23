@@ -15,11 +15,15 @@
       name="name"
       ngModel="{{productData.name}}"
     />
+    <small class="text-danger" *ngIf="errorName">
+      {{ errorName }}
+    </small>
     <div class="text-danger" *ngIf="submitted && updateProduct.controls.name.errors">
-      <div *ngIf="submitted && updateProduct.controls.name.errors.required">
-        Name is require!
-      </div>
+      <small>
+        {{ emptyName }}
+      </small>
     </div>
+
     <input
       type="text"
       class="form-control"
@@ -33,22 +37,20 @@
       ngModel="{{productData.price}}"
     />
     <div class="text-danger" *ngIf="submitted && updateProduct.controls.price.errors">
-      <div *ngIf="submitted && updateProduct.controls.price.errors.required">
-        Price is require!
+      <div>
+        <small class="text-danger" *ngIf="submitted && updateProduct.controls.price.errors.required">
+          {{ emptyPrice }}
+        </small></div>
+      <div>
+        <small class="text-danger">
+          {{ errorPrice }}
+        </small>
       </div>
-      <div *ngIf="submitted && updateProduct.controls.price.errors.pattern">
-        Price is just a number!
-      </div>
+
+
     </div>
     <button class="form-button">Update Product</button>
-    <small class="text-danger text" *ngIf="errorName">
-      {{ errorName }}
-    </small>
-    <small class="text-danger text" *ngIf="errorPrice">
-      {{ errorPrice }}
-    </small>
     <button class="form-button" routerLink="/products" style="margin-top: 20px">Go to Product</button>
-
   </form>
 
 </div>
