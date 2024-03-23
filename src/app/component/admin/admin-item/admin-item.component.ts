@@ -14,6 +14,10 @@ export class AdminItemComponent implements OnInit {
   public submitted = false;
   public messageError: undefined | string;
   public errorName: string | undefined;
+  public checkPriceWith0: string | undefined;
+  public checkPriceChar: string | undefined;
+  public nameRequire: string | undefined;
+  public priceRequire = "Price is require";
 
   constructor(private adminService: AdminItemService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
   }
@@ -24,28 +28,39 @@ export class AdminItemComponent implements OnInit {
       price: [0, Validators.required]
     })
   }
-
   submit(product: any) {
     this.submitted = true;
-    this.adminService.addProduct(product).subscribe(
-      (response: any) => {
-        if (!response) {
-          this.messageSuccess = "Item is added";
-        }
-        console.log(response);
-        this.errorName = response.message;
-      },
-      (error) => {
-        console.log(product.price);
-        this.messageError = error.error.message;
-      })
-    setTimeout(() => {
-      this.messageError = undefined;
-      this.errorName = undefined;
-    }, 2000);
-    setTimeout(() => {
-      this.messageSuccess = undefined;
-    }, 4000);
+    let pattern = new RegExp("^[0-9]*$");
+    let result=pattern.test(product.price);
+    console.log(result);
+    if (product.price < 0 ) {
+      this.checkPriceWith0 = "Price have to more than 0";
+    } else if (!product.name) {
+      this.nameRequire = "Name is require";
+    } else if (!product.price) {
+      this.priceRequire = "Price is require";
+    } else if (!result) {
+      this.checkPriceChar = "Price is a number"
+    } else {
+      this.adminService.addProduct(product).subscribe(
+        (response: any) => {
+          if (!response) {
+            this.messageSuccess = "Item is added";
+          }
+          console.log(response);
+          this.errorName = response.message;
+        },
+        (error) => {
+          console.log(error);
+          console.log(product.price);
+        })
+      setTimeout(() => {
+        this.errorName = undefined;
+      }, 2000);
+      setTimeout(() => {
+        this.messageSuccess = undefined;
+      }, 4000);
+    }
   }
 }
 

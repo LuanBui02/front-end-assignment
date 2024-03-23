@@ -1,10 +1,9 @@
 <div class="add-product">
   <h1>Add New Product</h1>
-  <p *ngIf="messageSuccess" class="message-p">{{ messageSuccess }}</p>
+  <p class="message-p">{{ messageSuccess }}</p>
   <form #addProduct="ngForm"
         (ngSubmit)="submit(addProduct.value)"
-        class="common-form">
-
+        class="common-form" autocomplete="off">
     <input
       type="text"
       class="form-control"
@@ -14,44 +13,46 @@
       [ngClass]="{'is-invalid': submitted && addProduct.controls.name.errors}"
       [class.is-invalid]="name.invalid && name.touched"
       required
-      [(ngModel)]="addProduct.name"
+      [(ngModel)]="addProduct.value.name"
     />
+    <small class="text-danger" *ngIf="errorName">
+      {{ errorName }}
+    </small>
     <div *ngIf="submitted && addProduct.controls.name.errors" class="text-danger">
-      <small class="text-danger"
-             *ngIf="submitted && addProduct.controls.name.errors.required">
-        Name is required!
+      <small class="text-danger">
+        {{ nameRequire }}
       </small>
     </div>
     <input
       type="text"
       class="form-control"
       required
-      pattern="\d{1,99}"
       #price="ngModel"
+      pattern="^[0-9]*$"
       [ngClass]="{'is-invalid': submitted && addProduct.controls.price.errors}"
       [class.is-invalid]="price.invalid && price.touched"
       placeholder="Enter Product Price"
       name="price"
-      ngModel
+      [(ngModel)]="addProduct.value.price"
     />
     <div *ngIf="submitted && addProduct.controls.price.errors" class="text-danger">
-      <small class="text-danger"
-             *ngIf="submitted && addProduct.controls.price.errors.required">
-        Price is required!
-      </small>
-      <small class="text-danger"
-             *ngIf="submitted && addProduct.controls.price.errors.pattern">
-        Price is number!
-      </small>
+      <div class="text-danger text" *ngIf="submitted && addProduct.controls.price.errors.required">
+        <small>{{priceRequire}}</small>
+      </div>
+      <div>
+        <small class="text-danger">
+          {{ checkPriceWith0 }}
+        </small>
+      </div><div>
+        <small class="text-danger">
+          {{ checkPriceChar }}
+        </small>
+      </div>
+
     </div>
 
     <button class="form-button">Add Product</button>
-    <small class="text-danger text" *ngIf="messageError">
-      {{ messageError }}
-    </small>
-    <small class="text-danger text" *ngIf="errorName">
-      {{ errorName }}
-    </small>
+
     <button class="form-button" routerLink="/products" style="margin-top: 20px">Go to Product</button>
 
     <button class="form-button" routerLink="/admin-update" style="margin-top: 20px">View update items</button>
