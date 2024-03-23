@@ -1,0 +1,25 @@
+.container {
+  margin: 10px auto;
+  width: 80%;
+  border: 1px black solid;
+}
+.title {
+  padding: 20px;
+  height: 400px;
+  position: absolute;
+}
+.content {
+  margin-top: 15%;
+  text-align: center;
+  img {
+    margin-bottom: 20px;
+  }
+  p{
+    font-weight: 600;
+    font-size: 20px;
+  }
+  button {
+    margin-bottom: 10px;
+  }
+}
+

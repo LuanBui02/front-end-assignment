@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="products.length > 0">
   <table class="table table-responsive">
     <thead>
     <tr>
@@ -26,4 +26,15 @@
     </tr>
     </tbody>
   </table>
+</div>
+
+<div class="container" *ngIf="products == 0">
+  <div class="title">
+    <h1>My Order</h1>
+  </div>
+  <div class="content">
+    <img src="../../../../assets/image/img.png" height="300" width="550" alt="Empty Order">
+    <p>Your order is empty</p>
+    <button class="btn btn-primary" routerLink="/products">Get your items</button>
+  </div>
 </div>
