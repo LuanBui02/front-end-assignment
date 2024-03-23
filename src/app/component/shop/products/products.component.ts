@@ -33,6 +33,8 @@ export class ProductsComponent implements OnInit {
     if (!this.cartService.productInCart(product)) {
       this.cartService.addToCart(product);
       console.log(product);
+    } else {
+      alert("This item is already added to cart")
     }
   }
 }
