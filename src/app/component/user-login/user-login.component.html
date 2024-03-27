@@ -1,0 +1,47 @@
+<div class="Login-user">
+  <div class="sign-in">
+    <h1>User Login</h1>
+    <form #userLogin="ngForm"
+          (ngSubmit)="signIn(userLogin.value)"
+          class="common-form">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Username"
+        required
+        #username="ngModel"
+        [ngClass]="{'is-invalid': submitted && userLogin.controls.username.errors}"
+        [class.is-invalid]="username.invalid && username.touched"
+        name="username"
+        ngModel
+      />
+      <div class="text-danger" *ngIf="submitted && userLogin.controls.username.errors">
+        <small>
+          {{errorName}}
+        </small>
+      </div>
+      <input
+        type="password"
+        class="form-control"
+        required
+        #password="ngModel"
+        [ngClass]="{'is-invalid': submitted && userLogin.controls.password.errors}"
+        [class.is-invalid]="password.invalid && password.touched"
+        placeholder="Enter Your password"
+        name="password"
+        ngModel
+      />
+      <div class="text-danger" *ngIf="submitted && userLogin.controls.password.errors">
+        <small>
+          {{errorPassword}}
+        </small>
+      </div>
+      <button class="form-button">Login to shopping</button>
+      <p>Want to create new account? <a (click)="clickSignUp()">Click Here</a></p>
+
+      <small class="text-danger text" *ngIf="emptyData">
+        {{emptyData}}
+      </small>
+    </form>
+  </div>
+</div>
