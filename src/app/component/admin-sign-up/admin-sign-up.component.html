@@ -1,0 +1,47 @@
+<div class="Sign-up-admin">
+  <h1>Admin Sign up</h1>
+  <form #adminSignUp="ngForm"
+        (ngSubmit)="submit(adminSignUp.value)"
+        class="common-form">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Username"
+      required
+      #username="ngModel"
+      [ngClass]="{'is-invalid': submitted && adminSignUp.controls.username.errors}"
+      [class.is-invalid]="username.invalid && username.touched"
+      name="username"
+      ngModel
+    />
+    <div *ngIf="submitted && adminSignUp.controls.username.errors" class="text-danger">
+      <small class="text-danger">
+        {{ errorName }}
+      </small>
+    </div>
+    <input
+      type="password"
+      class="form-control"
+      required
+      #password="ngModel"
+      [ngClass]="{'is-invalid': submitted && adminSignUp.controls.password.errors}"
+      [class.is-invalid]="password.invalid && password.touched"
+      placeholder="Enter Your password"
+      name="password"
+      ngModel
+    />
+    <div *ngIf="submitted && adminSignUp.controls.password.errors" class="text-danger">
+      <div class="text-danger text" *ngIf="submitted && adminSignUp.controls.password.errors.required">
+        <small class="text-danger">
+          {{ errorPassword }}
+        </small>
+      </div>
+    </div>
+    <button class="form-button">Login to manage items</button>
+    <p>Already have account? <a (click)="clickLogIn()">Click Here</a></p>
+    <small class="text-danger text" *ngIf="reported">
+      {{ reported }}
+    </small>
+  </form>
+
+</div>
