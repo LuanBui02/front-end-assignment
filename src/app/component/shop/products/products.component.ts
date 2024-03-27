@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../../service/api.service";
 import {CartService} from "../../../service/cart.service";
+import {AdminItemService} from "../../../service/admin-item.service";
 
 @Component({
   selector: 'app-products',
@@ -12,11 +13,11 @@ export class ProductsComponent implements OnInit {
   public filterCategory: any;
   public searchKey: string = "";
 
-  constructor(private api: ApiService, private cartService: CartService) {
+  constructor(private adminItem: AdminItemService, private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.api.getProducts().subscribe(res => {
+    this.adminItem.getProduct().subscribe(res => {
       this.productList = res;
       this.filterCategory = res;
       this.productList.forEach((a: any) => {
