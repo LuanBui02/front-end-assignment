@@ -1,0 +1,41 @@
+<nav class="nav navbar">
+    <div class="site-name">
+      <a href="#" routerLink="/items"><h2>eShopping</h2></a>
+      <input type="text" [(ngModel)]="searchItem" (keyup)="search($event)" placeholder="Chose your item"
+             style="border: 2px black solid; padding: 10px">
+      <span class="fas fa-search search-icon"></span>
+    </div>
+    <div [ngSwitch]="menuType">
+      <ul *ngSwitchCase="'default'" class="title">
+        <a class="admin" routerLink="admin-login">Admin</a>
+        <a class="user" routerLink="user-login">User</a>
+      </ul>
+      <ul *ngSwitchCase="'user'">
+        <button class="btn btn-primary" style=" background: #F5B041; border: none;margin-right: 10px">
+          <i style="font-size: 35px;" class="fas fa-cart-plus" routerLink="/products"></i>
+        </button>
+        <button class="btn btn-primary" style=" background: #F5B041; border: none;">
+          <i style="font-size: 35px;" class="fa-solid fa-receipt" routerLink="/cart"></i>
+          <div style="font-size: 10px; margin-right: 5px" class="badge bg-danger">{{ totalItem }}</div>
+        </button>
+        <a href="" (click)="logOut()">Log out</a>
+      </ul>
+      <ul *ngSwitchCase="'admin'">
+        <div class="flex">
+          <a href="#" routerLink="/admin-item" class="admin-seller"><p>Seller add item</p></a>
+          <a href="#" routerLink="/admin-update" class="admin-seller"><p>Seller update item</p></a>
+          <a href="#" routerLink="/admin-order" class="admin-seller"><p>Seller-order</p></a>
+        </div>
+        <div class="btn-all" style="margin-right: 5px; margin-top: 5px">
+          <button class="btn btn-primary" style=" background: #F5B041; border: none;margin-right: 10px">
+            <i style="font-size: 35px;" class="fas fa-cart-plus" routerLink="/products"></i>
+          </button>
+          <button class="btn btn-primary" style=" background: #F5B041; border: none;">
+            <i style="font-size: 35px;" class="fa-solid fa-receipt" routerLink="/cart"></i>
+            <div style="font-size: 10px; margin-right: 5px" class="badge bg-danger">{{ totalItem }}</div>
+          </button>
+          <a href="" (click)="adminLogOut()">Log out</a>
+        </div>
+      </ul>
+    </div>
+</nav>

@@ -1,0 +1,62 @@
+.navbar {
+  display: flex;
+  background-color: #F5B041;
+}
+
+.site-name {
+  display: flex;
+  padding: 5px 30px;
+  color: #E74C3C;
+
+  input {
+    width: 550px;
+    border-radius: 5px;
+    margin-left: 15px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #212F3D;
+  margin: 0 10px;
+
+  h2 {
+    color: #E74C3C;
+  }
+
+}
+
+.search-icon {
+  position: absolute;
+  z-index: 1;
+  right: 52%;
+  top: 38%;
+  font-size: 20px;
+}
+
+.btn1 {
+  position: absolute;
+  left: 88%;
+  top: 25%;
+  color: white;
+}
+
+.admin-seller{
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 21px;
+  margin-right: 5px;
+}
+.flex {
+  display: flex;
+  position: absolute;
+  right: 17.5%;
+}
+.title {
+  font-size: 25px;
+  margin-right: 10em;
+  margin-top: 20px;
+  .user {
+    margin-left: 4em;
+  }
+}

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of filterCategory | search:searchKey:'name'">
+      <div class="card col-md-3">
+        <h5>{{ product.name }}</h5>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <button (click)="login()">Add to cart</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
