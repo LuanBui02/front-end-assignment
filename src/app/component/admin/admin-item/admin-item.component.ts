@@ -12,7 +12,6 @@ export class AdminItemComponent implements OnInit {
   public products: any;
   public messageSuccess: string | undefined;
   public submitted = false;
-  public messageError: undefined | string;
   public errorName: string | undefined;
   public checkPriceWith0: string | undefined;
   public checkPriceChar: string | undefined;
