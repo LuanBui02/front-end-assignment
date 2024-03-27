@@ -15,6 +15,12 @@ import {AdminItemComponent} from './component/admin/admin-item/admin-item.compon
 import {AdminOrderComponent} from './component/admin/admin-order/admin-order.component';
 import {AdminUpdateComponent} from './component/admin/admin-update/admin-update.component';
 import {AdminUpdateItemComponent} from './component/admin/admin-update-item/admin-update-item.component';
+import { HomeComponent } from './component/home/home.component';
+import { ItemsComponent } from './component/home/items/items.component';
+import { UserLoginComponent } from './component/user-login/user-login.component';
+import { AdminLoginComponent } from './component/admin-login/admin-login.component';
+import { UserSignUpComponent } from './component/user-sign-up/user-sign-up.component';
+import { AdminSignUpComponent } from './component/admin-sign-up/admin-sign-up.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,13 @@ import {AdminUpdateItemComponent} from './component/admin/admin-update-item/admi
     AdminItemComponent,
     AdminOrderComponent,
     AdminUpdateComponent,
-    AdminUpdateItemComponent
+    AdminUpdateItemComponent,
+    HomeComponent,
+    ItemsComponent,
+    UserLoginComponent,
+    AdminLoginComponent,
+    UserSignUpComponent,
+    AdminSignUpComponent
   ],
   imports: [
     BrowserModule,
