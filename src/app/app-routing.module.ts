@@ -10,10 +10,7 @@ import {AdminUpdateComponent} from "./component/admin/admin-update/admin-update.
 import {AdminUpdateItemComponent} from "./component/admin/admin-update-item/admin-update-item.component";
 import {HomeComponent} from "./component/home/home.component";
 import {ItemsComponent} from "./component/home/items/items.component";
-import {AdminLoginComponent} from "./component/admin-login/admin-login.component";
-import {UserLoginComponent} from "./component/user-login/user-login.component";
-import {UserSignUpComponent} from "./component/user-sign-up/user-sign-up.component";
-import {AdminSignUpComponent} from "./component/admin-sign-up/admin-sign-up.component";
+import {LoginComponent} from "./component/login/login.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'items', pathMatch: "full"},
@@ -27,10 +24,7 @@ const routes: Routes = [
   {path: 'admin-order', component: AdminOrderComponent},
   {path: 'admin-update', component: AdminUpdateComponent},
   {path: 'admin-update-item/:id', component: AdminUpdateItemComponent},
-  {path: 'admin-login', component: AdminLoginComponent},
-  {path: 'user-login', component: UserLoginComponent},
-  {path: 'user-sign-up', component: UserSignUpComponent},
-  {path: 'admin-sign-up', component: AdminSignUpComponent}
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
