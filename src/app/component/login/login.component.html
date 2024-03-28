@@ -1,7 +1,7 @@
-<div class="Login-admin">
-  <h1>Admin Login</h1>
-  <form #adminLogin="ngForm"
-        (ngSubmit)="submit(adminLogin.value)"
+<div class="Login">
+  <h1>Login</h1>
+  <form #Login="ngForm"
+        (ngSubmit)="submit(Login.value)"
         class="common-form">
     <input
       type="text"
@@ -9,12 +9,12 @@
       placeholder="Enter Username"
       required
       #username="ngModel"
-      [ngClass]="{'is-invalid': submitted && adminLogin.controls.username.errors}"
+      [ngClass]="{'is-invalid': submitted && Login.controls.username.errors}"
       [class.is-invalid]="username.invalid && username.touched"
       name="username"
       ngModel
     />
-    <div *ngIf="submitted && adminLogin.controls.username.errors" class="text-danger">
+    <div *ngIf="submitted && Login.controls.username.errors" class="text-danger">
       <small class="text-danger">
         {{ errorName }}
       </small>
@@ -24,22 +24,20 @@
       class="form-control"
       required
       #password="ngModel"
-      [ngClass]="{'is-invalid': submitted && adminLogin.controls.password.errors}"
+      [ngClass]="{'is-invalid': submitted && Login.controls.password.errors}"
       [class.is-invalid]="password.invalid && password.touched"
       placeholder="Enter Your password"
       name="password"
       ngModel
     />
-    <div *ngIf="submitted && adminLogin.controls.password.errors" class="text-danger">
-      <div class="text-danger text" *ngIf="submitted && adminLogin.controls.password.errors.required">
+    <div *ngIf="submitted && Login.controls.password.errors" class="text-danger">
+      <div class="text-danger text" *ngIf="submitted && Login.controls.password.errors.required">
         <small class="text-danger">
           {{ errorPassword }}
         </small>
       </div>
     </div>
-    <button class="form-button">Login to manage items</button>
-    <p>Want to create new account? <a (click)="clickSignUp()">Click Here</a></p>
-
+    <button class="form-button">Login</button>
     <small class="text-danger text" *ngIf="emptyData">
       {{ emptyData }}
     </small>
