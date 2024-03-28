@@ -11,24 +11,8 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) {
   }
-
-  userLogin(data: any) {
+  login(data: any) {
     return this.http.get(
-      `http://localhost:8080/api/login/user/username/password?username=${data.username}&password=${data.password}`,
-      {observe: 'response'})
-  }
-
-  adminLogin(data: any) {
-    return this.http.get(
-      `http://localhost:8080/api/login/admin/username/password?username=${data.username}&password=${data.password}`,
-      {observe: 'response'})
-  }
-  addAccountUser(data:any) {
-    return this.http.post(
-      `http://localhost:8080/api/login/user`, data);
-  }
-  addAccountAdmin(data:any) {
-    return this.http.post(
-      `http://localhost:8080/api/login/admin`, data);
+      `http://localhost:8080/api/login/user?username=${data.username}&password=${data.password}`)
   }
 }
